@@ -83,17 +83,12 @@ api_request() {
   set -e
 
   local exit_code="$?"
-  local errors="$(cat "$out" | jq '.errors')"
-
+  
   if [[ $exit_code != '0' ]]; then
     log "There's been a curl error when querying the API"
     cat "$err" 1>&2
     return 1
-  elif [[ $errors != 'null' ]]; then
-    log "There's been an error when querying the API"
-    log "$errors"
-    cat "$err" 1>&2
-    return 1
+
   fi
 
   cat "$out"
