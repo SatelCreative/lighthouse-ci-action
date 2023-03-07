@@ -237,6 +237,7 @@ module.exports = async (browser) => {
   }
   // Get preview cookie
   console.error('Getting preview cookie...');
+ // console.error($preview_url)
   await page.goto('$preview_url');
   // close session for next run
   await page.close();
